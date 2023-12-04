@@ -23,7 +23,9 @@ def sereach_prod():
     return list_receitas
 
 def limpar_lista(list_receitas):
+    # Separa a lista pelos epaços
     itens = list_receitas[0].splitlines()
+    # Retira os espaços da lista
     lista_limpa = [item.strip() for item in itens if item.strip()]
     return lista_limpa
 
@@ -34,7 +36,7 @@ lista_ingrediente=[]
 
 
 
-def get_links(list_receitas):
+def get_data(list_receitas):
     recipes_list = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'recipes-list')))
     recipe_links = recipes_list.find_elements(By.TAG_NAME, 'a')
 
@@ -75,7 +77,7 @@ def get_links(list_receitas):
 # Chamando as funções
 lista_receitas = sereach_prod()
 lista_limpa = limpar_lista(lista_receitas)
-get_links(lista_limpa)
+get_data(lista_limpa)
 
 
 
